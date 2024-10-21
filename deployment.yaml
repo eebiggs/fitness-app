@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: fitnessapp
+  labels:
+    app: fitnessapp
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: fitnessapp
+  template:
+    metadata:
+      labels:
+        app: fitnessapp
+    spec:
+      containers:
+        - name: fitnessapp
+          image: registry.digitalocean.com/lab8-registry/flask-fitness-tracker:0.0.1 
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 5000  # Make sure this matches the port your Flask app is using
